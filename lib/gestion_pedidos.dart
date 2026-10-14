@@ -71,7 +71,7 @@ void registrarPedido() {
   }
 
   int cantidad = leerEnteroPositivo('Cantidad: ');
-  
+
   int precioUnitario = carta[plato]!;
 
   contadorPedidos++;
@@ -95,5 +95,34 @@ void listarPedidos() {
     }
 
     print('\nTotal de pedidos: ${pedidos.length}');
+  }
+}
+
+
+Pedido? encontrarPedido(int numero) {
+  for (Pedido pedido in pedidos) {
+    if (pedido.numero == numero) {
+      return pedido;
+    }
+  }
+
+  return null;
+}
+
+void buscarPedidoPorNumero() {
+  print('\n---BUSCAR PEDIDO POR NÚMERO---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    int numero = leerEnteroPositivo('Número del pedido: ');
+    Pedido? pedidoEncontrado = encontrarPedido(numero);
+
+    if (pedidoEncontrado != null) {
+      print('\nPedido encontrado');
+      pedidoEncontrado.mostrarInformacion();
+    } else {
+      print('No existe un pedido con el número $numero');
+    }
   }
 }
