@@ -23,7 +23,46 @@ Desde un menú, el usuario puede:
 ## Investigación: clases y objetos
 
 
+Primero hice la investigación, la puse en práctica y ahí sí ya entendí. Por eso, para estas descripciones usaré como ejemplo mi desarrollo, porque es la forma más fácil y sencilla en la que pude entenderlo.
+
+### ¿Qué es una clase?
+Una clase es la agrupación de varios datos que suelen estar separados o regados. En el caso de este ejercicio del restaurante, el pedido completo tiene el nombre, el plato, la cantidad y el precio, datos que normalmente se escriben por separado, pero una clase los agrupa. La clase funciona como un molde: dice qué datos y qué acciones tendrá cada pedido.
+
+**En mi proyecto:** la clase está en `lib/pedido.dart`.
+
+    class Pedido {
+
+### ¿Qué es un objeto?
+Un objeto es lo que se genera a la hora de ejecutar el programa a partir de la clase. En mi ejemplo del restaurante, el objeto sería un pedido nuevo que ingresa un cliente, con sus datos reales.
+
+**En mi proyecto:** en `lib/gestion_pedidos.dart`, dentro de `registrarPedido()`, se crea el objeto `nuevoPedido`. Cada pedido que se guarda en la lista `pedidos` es un objeto distinto.
+
+    Pedido nuevoPedido = Pedido(contadorPedidos, nombreCliente, mesa, plato, cantidad, precioUnitario);
+
+### ¿Cuál es la diferencia entre una clase y un objeto?
+La clase define cómo es la información y el objeto se genera a la hora de ejecutar la función, ya con los datos llenos. La clase es una sola (`Pedido`), pero con ella se pueden crear muchos objetos, cada uno con sus propios datos, por ejemplo el pedido de Juan y el pedido de Ana.
+
+### ¿Qué es un atributo?
+Los atributos son lo que compone a las clases. En mi ejemplo, la clase es `Pedido` y los atributos son el nombre, el plato, el precio, etc.
+
+**En mi proyecto:** en `lib/pedido.dart` los atributos son `numero`, `nombreCliente`, `mesa`,
+`plato`, `cantidad`, `precioUnitario` y `estado`.
+
+### ¿Qué es un método?
+El método es una función que hace parte de las clases y ayuda a definir acciones o comportamientos que pueden realizar los objetos de una clase.
+
+**En mi proyecto:** en `lib/pedido.dart` están `calcularTotal()`, que devuelve la cantidad por el precio, y `mostrarInformacion()`, que imprime los datos del pedido y se usa en
+`listarPedidos()`.
+
+### ¿Para qué sirve un constructor?
+El constructor sirve para iniciar un nuevo objeto de una clase y ponerle sus datos iniciales.
+
+**En mi proyecto:** en `lib/pedido.dart`
+
+    Pedido(this.numero, this.nombreCliente, this.mesa, this.plato, this.cantidad, this.precioUnitario);
+
 
 ## Bitácora de desarrollo
 
 - **12 de octubre:** creación del proyecto, repositorio en GitHub y README inicial.
+- - **13 de octubre:** creé el menú principal con while y switch, la carta del restaurante con un Map, la clase Pedido con sus atributos, constructor y métodos, y las opciones de registrar y listar pedidos usando una List. Encontré un problema: si el usuario escribe letras en el menú, el programa se cae con FormatException (pendiente por corregir).
