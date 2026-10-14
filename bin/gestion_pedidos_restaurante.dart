@@ -27,9 +27,8 @@ void main(List<String> arguments) {
     opcion = int.parse(stdin.readLineSync()!);
 
     switch (opcion) {
-       case 1:
-        mostrarCarta();
-        print('Opción: Registrar pedido (en construcción)');
+      case 1:
+        registrarPedido();
         break;
       case 2:
         print('Opción: Consultar todos los pedidos (en construcción)');
