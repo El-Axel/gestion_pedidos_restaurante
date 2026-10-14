@@ -55,3 +55,17 @@ void registrarPedido() {
     print('El plato "$plato" no está en la carta');
   }
 }
+
+void listarPedidos() {
+  print('\n---PEDIDOS REGISTRADOS---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    for (Pedido pedido in pedidos) {
+      pedido.mostrarInformacion();
+    }
+
+    print('\nTotal de pedidos: ${pedidos.length}');
+  }
+}
