@@ -30,6 +30,17 @@ int leerEntero(String mensaje) {
   return numero;
 }
 
+int leerEnteroPositivo(String mensaje) {
+  int numero = leerEntero(mensaje);
+
+  while (numero <= 0) {
+    print('El número debe ser mayor que 0, intente de nuevo.');
+    numero = leerEntero(mensaje);
+  }
+
+  return numero;
+}
+
 void mostrarCarta() {
   print('\n----- CARTA DEL RESTAURANTE -----');
 
@@ -48,7 +59,7 @@ void registrarPedido() {
   stdout.write('Nombre del cliente: ');
   String nombreCliente = stdin.readLineSync()!;
 
-  int mesa = leerEntero('Número de mesa: ');
+  int mesa = leerEnteroPositivo('Número de mesa: ');
 
   stdout.write('Plato (escríbalo igual que en la carta): ');
   String plato = stdin.readLineSync()!;
@@ -59,8 +70,8 @@ void registrarPedido() {
     plato = stdin.readLineSync()!;
   }
 
-  int cantidad = leerEntero('Cantidad: ');
-
+  int cantidad = leerEnteroPositivo('Cantidad: ');
+  
   int precioUnitario = carta[plato]!;
 
   contadorPedidos++;
