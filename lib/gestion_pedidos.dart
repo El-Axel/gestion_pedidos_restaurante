@@ -13,6 +13,23 @@ List<Pedido> pedidos = [];
 
 int contadorPedidos = 0;
 
+int leerEntero(String mensaje) {
+  int? numero;
+
+  while (numero == null) {
+    stdout.write(mensaje);
+    String entrada = stdin.readLineSync()!;
+
+    numero = int.tryParse(entrada);
+
+    if (numero == null) {
+      print('Debe escribir un número válido, intente de nuevo.');
+    }
+  }
+
+  return numero;
+}
+
 void mostrarCarta() {
   print('\n----- CARTA DEL RESTAURANTE -----');
 
@@ -31,29 +48,29 @@ void registrarPedido() {
   stdout.write('Nombre del cliente: ');
   String nombreCliente = stdin.readLineSync()!;
 
-  stdout.write('Número de mesa: ');
-  int mesa = int.parse(stdin.readLineSync()!);
+  int mesa = leerEntero('Número de mesa: ');
 
   stdout.write('Plato (escríbalo igual que en la carta): ');
   String plato = stdin.readLineSync()!;
 
-  if (carta.containsKey(plato)) {
-    stdout.write('Cantidad: ');
-    int cantidad = int.parse(stdin.readLineSync()!);
-
-    int precioUnitario = carta[plato]!;
-
-    contadorPedidos++;
-
-    Pedido nuevoPedido = Pedido(contadorPedidos, nombreCliente, mesa, plato, cantidad, precioUnitario);
-
-    pedidos.add(nuevoPedido);
-
-    print('\nPedido registrado correctamente');
-    nuevoPedido.mostrarInformacion();
-  } else {
-    print('El plato "$plato" no está en la carta');
+  while (!carta.containsKey(plato)) {
+    print('El plato "$plato" no está en la carta, intente de nuevo.');
+    stdout.write('Plato (escríbalo igual que en la carta): ');
+    plato = stdin.readLineSync()!;
   }
+
+  int cantidad = leerEntero('Cantidad: ');
+
+  int precioUnitario = carta[plato]!;
+
+  contadorPedidos++;
+
+  Pedido nuevoPedido = Pedido(contadorPedidos, nombreCliente, mesa, plato, cantidad, precioUnitario);
+
+  pedidos.add(nuevoPedido);
+
+  print('\nPedido registrado correctamente');
+  nuevoPedido.mostrarInformacion();
 }
 
 void listarPedidos() {

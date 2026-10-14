@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:gestion_pedidos_restaurante/gestion_pedidos.dart';
 import 'package:gestion_pedidos_restaurante/pedido.dart';
 
@@ -22,9 +21,7 @@ void main(List<String> arguments) {
     print('6. Mostrar resumen');
     print('0. Salir');
 
-    stdout.write('\nSeleccione una opción: ');
-
-    opcion = int.parse(stdin.readLineSync()!);
+    opcion = leerEntero('\nSeleccione una opción: ');
 
     switch (opcion) {
       case 1:
