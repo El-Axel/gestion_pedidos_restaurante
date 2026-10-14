@@ -1,7 +1,11 @@
 import 'dart:io';
 import 'package:gestion_pedidos_restaurante/gestion_pedidos.dart';
+import 'package:gestion_pedidos_restaurante/pedido.dart';
 
 void main(List<String> arguments) {
+
+  Pedido pruebaPedido = Pedido(1, 'Juan', 4, 'Ajiaco', 2, 22000);
+  pruebaPedido.mostrarInformacion();
 
   int opcion = -1;
 
