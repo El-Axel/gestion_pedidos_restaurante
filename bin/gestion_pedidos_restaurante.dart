@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:gestion_pedidos_restaurante/gestion_pedidos.dart';
 
 void main(List<String> arguments) {
 
@@ -22,7 +23,8 @@ void main(List<String> arguments) {
     opcion = int.parse(stdin.readLineSync()!);
 
     switch (opcion) {
-      case 1:
+       case 1:
+        mostrarCarta();
         print('Opción: Registrar pedido (en construcción)');
         break;
       case 2:
