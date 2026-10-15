@@ -11,6 +11,8 @@ Map<String, int> carta = {
 
 List<Pedido> pedidos = [];
 
+Set<String> clientes = {};
+
 int contadorPedidos = 0;
 
 int leerEntero(String mensaje) {
@@ -80,6 +82,8 @@ void registrarPedido() {
 
   pedidos.add(nuevoPedido);
 
+  clientes.add(nombreCliente);
+
   print('\nPedido registrado correctamente');
   nuevoPedido.mostrarInformacion();
 }
@@ -95,6 +99,7 @@ void listarPedidos() {
     }
 
     print('\nTotal de pedidos: ${pedidos.length}');
+    print('Clientes diferentes: ${clientes.length}');
   }
 }
 
