@@ -260,3 +260,34 @@ void eliminarPedido() {
     }
   }
 }
+
+void mostrarResumen() {
+  print('\n---RESUMEN DEL RESTAURANTE---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    int totalVendido = 0;
+    int pendientes = 0;
+    int entregados = 0;
+
+    for (Pedido pedido in pedidos) {
+      totalVendido += pedido.calcularTotal();
+
+      if (pedido.estado == 'Pendiente') {
+        pendientes++;
+      } else {
+        entregados++;
+      }
+    }
+
+    double promedioPorPedido = totalVendido / pedidos.length;
+
+    print('Total de pedidos: ${pedidos.length}');
+    print('Clientes diferentes: ${clientes.length}');
+    print('Pedidos pendientes: $pendientes');
+    print('Pedidos entregados: $entregados');
+    print('Total vendido: \$$totalVendido');
+    print('Promedio por pedido: \$${promedioPorPedido.toStringAsFixed(0)}');
+  }
+}

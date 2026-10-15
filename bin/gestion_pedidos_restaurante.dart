@@ -40,7 +40,7 @@ void main(List<String> arguments) {
         eliminarPedido();
         break;
       case 6:
-        print('Opción: Mostrar resumen (en construcción)');
+        mostrarResumen();
         break;
       case 0:
         print('Gracias por usar el sistema. ¡Hasta pronto!');
