@@ -48,8 +48,11 @@ int leerEnteroPositivo(String mensaje) {
 void mostrarCarta() {
   print('\n----- CARTA DEL RESTAURANTE -----');
 
+  int numeroPlato = 1;
+
   for (String plato in carta.keys) {
-    print('$plato: \$${carta[plato]}');
+    print('$numeroPlato. $plato: \$${carta[plato]}');
+    numeroPlato++;
   }
 
   print('---------------------------------');
@@ -65,14 +68,16 @@ void registrarPedido() {
 
   int mesa = leerEnteroPositivo('Número de mesa: ');
 
-  stdout.write('Plato (escríbalo igual que en la carta): ');
-  String plato = stdin.readLineSync()!;
+  List<String> platosDisponibles = carta.keys.toList();
 
-  while (!carta.containsKey(plato)) {
-    print('El plato "$plato" no está en la carta, intente de nuevo.');
-    stdout.write('Plato (escríbalo igual que en la carta): ');
-    plato = stdin.readLineSync()!;
+  int opcionPlato = leerEnteroPositivo('Número del plato: ');
+
+  while (opcionPlato > platosDisponibles.length) {
+    print('Ese número no está en la carta, intente de nuevo.');
+    opcionPlato = leerEnteroPositivo('Número del plato: ');
   }
+
+  String plato = platosDisponibles[opcionPlato - 1];
 
   int cantidad = leerEnteroPositivo('Cantidad: ');
 
@@ -265,7 +270,7 @@ void eliminarPedido() {
 
 void mostrarResumen() {
   print('\n---RESUMEN DEL RESTAURANTE $nombreRestaurante---');
-  
+
   if (pedidos.isEmpty) {
     print('No hay pedidos registrados todavía');
   } else {
