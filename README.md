@@ -18,7 +18,33 @@ Desde un menú, el usuario puede:
 
 ## Cómo ejecutar el proyecto
 
+**Requisitos:** tener instalado el SDK de Dart.
 
+1. Clonar el repositorio:
+```
+git clone https://github.com/El-Axel/gestion_pedidos_restaurante.git
+```
+2. Entrar a la carpeta del proyecto:
+```
+cd gestion_pedidos_restaurante
+```
+3. Ejecutar el programa:
+```
+dart run
+```
+4. Usar el menú escribiendo el número de la opción y presionando Enter.
+
+## Estructura del proyecto
+
+----
+bin/gestion_pedidos_restaurante.dart  → menú principal (while y switch)
+lib/gestion_pedidos.dart              → carta (Map), pedidos (List), clientes (Set) y funciones
+lib/pedido.dart                       → clase Pedido
+----
+
+- **List** `pedidos`: guarda todos los pedidos registrados.
+- **Set** `clientes`: guarda los nombres de los clientes sin repetir.
+- **Map** `carta`: relaciona cada plato con su precio.
 
 ## Investigación: clases y objetos
 
@@ -65,5 +91,6 @@ El constructor sirve para iniciar un nuevo objeto de una clase y ponerle sus dat
 ## Bitácora de desarrollo
 
 - **12 de octubre:** creación del proyecto, repositorio en GitHub y README inicial.
-- - **13 de octubre:** creé el menú principal con while y switch, la carta del restaurante con un Map, la clase Pedido con sus atributos, constructor y métodos, y las opciones de registrar y listar pedidos usando una List. Encontré un problema: si el usuario escribe letras en el menú, el programa se cae con FormatException (pendiente por corregir).
+- **13 de octubre:** creé el menú principal con while y switch, la carta del restaurante con un Map, la clase Pedido con sus atributos, constructor y métodos, y las opciones de registrar y listar pedidos usando una List. Encontré un problema: si el usuario escribe letras en el menú, el programa se cae con FormatException (pendiente por corregir).
 - **14 de octubre:** corregí el problema del FormatException que encontré el día anterior, cambiando int.parse por int.tryParse con una función leerEntero. Al probarlo me di cuenta de que si el plato no existía, el programa me devolvía al menú y se perdían los datos, así que lo cambié de un if a un while para que vuelva a preguntar. También validé que la mesa y la cantidad sean mayores que 0. Después hice la búsqueda de pedidos por número y por nombre del cliente, la modificación de la cantidad y el estado, y la eliminación con confirmación. Por último agregué un Set para contar los clientes sin repetirlos. Con esto ya quedaron funcionando la List, el Set y el Map.
+- **15 de octubre:** hice el resumen del restaurante con el total vendido, los pedidos pendientes y entregados, los clientes diferentes y el promedio por pedido. Agregué una constante con el nombre del restaurante para usarla en el menú y en el resumen. Como mejora propia, cambié la forma de elegir el plato: ahora se escoge por número en vez de escribir el nombre, porque probando me di cuenta de que era más natural y así se evitan errores con mayúsculas y tildes. Por último completé el README con las instrucciones de ejecución y la estructura del proyecto.
