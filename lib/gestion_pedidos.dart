@@ -228,3 +228,30 @@ void modificarPedido() {
     }
   }
 }
+
+void eliminarPedido() {
+  print('\n---ELIMINAR PEDIDO---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    int numero = leerEnteroPositivo('Número del pedido a eliminar: ');
+    Pedido? pedidoEncontrado = encontrarPedido(numero);
+
+    if (pedidoEncontrado != null) {
+      pedidoEncontrado.mostrarInformacion();
+
+      stdout.write('¿Seguro que desea eliminar este pedido? s/n: ');
+      String confirmacion = stdin.readLineSync()!;
+
+      if (confirmacion.toLowerCase() == 's') {
+        pedidos.remove(pedidoEncontrado);
+        print('El pedido #$numero ha sido eliminado');
+      } else {
+        print('Eliminación cancelada');
+      }
+    } else {
+      print('No existe un pedido con el número $numero');
+    }
+  }
+}

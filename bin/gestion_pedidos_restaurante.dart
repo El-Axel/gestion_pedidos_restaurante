@@ -37,7 +37,7 @@ void main(List<String> arguments) {
         modificarPedido();
         break;
       case 5:
-        print('Opción: Eliminar pedido (en construcción)');
+        eliminarPedido();
         break;
       case 6:
         print('Opción: Mostrar resumen (en construcción)');
