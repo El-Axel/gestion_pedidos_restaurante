@@ -31,7 +31,7 @@ void main(List<String> arguments) {
         listarPedidos();
         break;
       case 3:
-        buscarPedidoPorNumero();
+        buscarPedido();
         break;
       case 4:
         print('Opción: Modificar pedido (en construcción)');

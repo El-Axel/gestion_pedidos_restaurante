@@ -126,3 +126,50 @@ void buscarPedidoPorNumero() {
     }
   }
 }
+
+void buscarPedidosPorCliente() {
+  print('\n---BUSCAR PEDIDOS POR CLIENTE---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    stdout.write('Nombre del cliente: ');
+    String nombre = stdin.readLineSync()!;
+
+    int encontrados = 0;
+
+    for (Pedido pedido in pedidos) {
+
+      if (pedido.nombreCliente.toLowerCase() == nombre.toLowerCase()) {
+        pedido.mostrarInformacion();
+        encontrados++;
+      }
+    }
+
+    if (encontrados == 0) {
+      print('No hay pedidos del cliente "$nombre"');
+    } else {
+      print('\nPedidos encontrados: $encontrados');
+    }
+  }
+}
+
+void buscarPedido() {
+  print('\n---BUSCAR PEDIDO---');
+  print('1. Buscar por número de pedido');
+  print('2. Buscar por nombre del cliente');
+
+  int criterio = leerEntero('Seleccione el criterio de búsqueda: ');
+
+  switch (criterio) {
+    case 1:
+      buscarPedidoPorNumero();
+      break;
+    case 2:
+      buscarPedidosPorCliente();
+      break;
+    default:
+      print('Criterio no válido');
+      break;
+  }
+}
