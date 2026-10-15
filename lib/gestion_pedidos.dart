@@ -173,3 +173,58 @@ void buscarPedido() {
       break;
   }
 }
+
+void modificarPedido() {
+  print('\n---MODIFICAR PEDIDO---');
+
+  if (pedidos.isEmpty) {
+    print('No hay pedidos registrados todavía');
+  } else {
+    int numero = leerEnteroPositivo('Número del pedido a modificar: ');
+    Pedido? pedidoEncontrado = encontrarPedido(numero);
+
+    if (pedidoEncontrado != null) {
+      print('\nPedido actual:');
+      pedidoEncontrado.mostrarInformacion();
+
+      print('\n¿Qué desea modificar?');
+      print('1. Cantidad');
+      print('2. Estado');
+      int opcionModificar = leerEntero('Seleccione una opción: ');
+
+      switch (opcionModificar) {
+        case 1:
+          int nuevaCantidad = leerEnteroPositivo('Nueva cantidad: ');
+          pedidoEncontrado.cantidad = nuevaCantidad;
+
+          print('\nCantidad modificada correctamente');
+          pedidoEncontrado.mostrarInformacion();
+          break;
+
+        case 2:
+          print('1. Pendiente');
+          print('2. Entregado');
+          int opcionEstado = leerEntero('Seleccione el nuevo estado: ');
+
+          if (opcionEstado == 1) {
+            pedidoEncontrado.estado = 'Pendiente';
+            print('\nEstado modificado correctamente');
+            pedidoEncontrado.mostrarInformacion();
+          } else if (opcionEstado == 2) {
+            pedidoEncontrado.estado = 'Entregado';
+            print('\nEstado modificado correctamente');
+            pedidoEncontrado.mostrarInformacion();
+          } else {
+            print('Estado no válido');
+          }
+          break;
+
+        default:
+          print('Opción no válida');
+          break;
+      }
+    } else {
+      print('No existe un pedido con el número $numero');
+    }
+  }
+}
