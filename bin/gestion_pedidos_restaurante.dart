@@ -12,7 +12,7 @@ void main(List<String> arguments) {
 
   while (opcion != 0) {
     print('\nSISTEMA DE GESTIÓN DE PEDIDOS - RESTAURANTE');
-    print('** RESTAURANTE EL BUEN SABOR **');
+    print('** RESTAURANTE $nombreRestaurante **');
     print('1. Registrar pedido');
     print('2. Consultar todos los pedidos');
     print('3. Buscar pedido');

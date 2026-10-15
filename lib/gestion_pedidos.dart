@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'pedido.dart';
 
+const String nombreRestaurante = 'El Buen Sabor';
+
 Map<String, int> carta = {
   'Bandeja paisa': 58000,
   'Ajiaco': 22000,
@@ -262,8 +264,8 @@ void eliminarPedido() {
 }
 
 void mostrarResumen() {
-  print('\n---RESUMEN DEL RESTAURANTE---');
-
+  print('\n---RESUMEN DEL RESTAURANTE $nombreRestaurante---');
+  
   if (pedidos.isEmpty) {
     print('No hay pedidos registrados todavía');
   } else {
